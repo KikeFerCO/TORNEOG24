@@ -27,6 +27,7 @@ namespace Torneo.App.Consola
                 Console.WriteLine("7. Mostrar municipios");
                 Console.WriteLine("8. Mostrar DTs");
                 Console.WriteLine("9. Mostrar equipos");
+                Console.WriteLine("10. Mostrar posiciones");
                 Console.WriteLine("0. Salir");
                 opcion = Int32.Parse(Console.ReadLine());
                 switch (opcion)
@@ -57,6 +58,9 @@ namespace Torneo.App.Consola
                         break;
                     case 9:
                         GetAllEquipos();
+                        break;
+                    case 10:
+                        GetAllPosiciones();
                         break;
                 }
             } while (opcion != 0);
@@ -182,6 +186,14 @@ namespace Torneo.App.Consola
             {
                 Console.WriteLine(equipo.Id + " " + equipo.Nombre + " " + equipo.Municipio.Nombre
                 + " " + equipo.DirectorTecnico.Nombre);
+            }
+        }
+
+        private static void GetAllPosiciones()
+        {
+            foreach (var posicion in _repoPosicion.GetAllPosiciones())
+            {
+                Console.WriteLine(posicion.Id + " " + posicion.Nombre);
             }
         }
 
