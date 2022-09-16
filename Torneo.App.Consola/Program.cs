@@ -18,18 +18,20 @@ namespace Torneo.App.Consola
             int opcion = 0;
             do
             {
-                Console.WriteLine("1. Insertar municipio");
-                Console.WriteLine("2. Insertar director tecnico");
-                Console.WriteLine("3. Insertar equipo");
-                Console.WriteLine("4. Insertar posicion");
-                Console.WriteLine("5. Insertar jugador");
-                Console.WriteLine("6. Insertar partido");
-                Console.WriteLine("7. Mostrar municipios");
-                Console.WriteLine("8. Mostrar DTs");
-                Console.WriteLine("9. Mostrar equipos");
-                Console.WriteLine("10. Mostrar posiciones");
-                Console.WriteLine("11. Mostrar jugadores");
-                Console.WriteLine("0. Salir");
+                Console.WriteLine("1.   Insertar municipio");
+                Console.WriteLine("2.   Insertar director tecnico");
+                Console.WriteLine("3.   Insertar equipo");
+                Console.WriteLine("4.   Insertar posicion");
+                Console.WriteLine("5.   Insertar jugador");
+                Console.WriteLine("6.   Insertar partido");
+                Console.WriteLine("7.   Mostrar municipios");
+                Console.WriteLine("8.   Mostrar DTs");
+                Console.WriteLine("9.   Mostrar equipos");
+                Console.WriteLine("10.  Mostrar posiciones");
+                Console.WriteLine("11.  Mostrar jugadores");
+                Console.WriteLine("12.  Mostrar partidos");
+                Console.WriteLine("0.   Salir");
+                
                 opcion = Int32.Parse(Console.ReadLine());
                 switch (opcion)
                 {
@@ -65,6 +67,9 @@ namespace Torneo.App.Consola
                         break;
                     case 11:
                         GetAllJugadores();
+                        break;
+                    case 12:
+                        GetAllPartidos();
                         break;
                 }
             } while (opcion != 0);
@@ -208,6 +213,16 @@ namespace Torneo.App.Consola
                 Console.WriteLine(jugador.Nombre + " " + jugador.Numero + " " 
                 + jugador.Equipo.Nombre + " " + jugador.Posicion.Nombre);
 
+            }
+        }
+
+        private static void GetAllPartidos()
+        {
+            foreach (var partido in _repoPartido.GetAllPartidos())
+            {
+                Console.WriteLine(partido.Id + " " + partido.FechaHora + " " + partido.Local.Nombre
+                + " " + partido.MarcadorLocal + " " + partido.Visitante.Nombre 
+                + " " + partido.MarcadorVisitante);
             }
         }
 
