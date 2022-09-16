@@ -11,7 +11,7 @@ namespace Torneo.App.Consola
         private static IRepositorioPosicion _repoPosicion = new RepositorioPosicion();
         private static IRepositorioJugador _repoJugador = new RepositorioJugador();
         private static IRepositorioPartido _repoPartido = new RepositorioPartido();
-        
+
 
         static void Main(string[] args)
         {
@@ -28,6 +28,7 @@ namespace Torneo.App.Consola
                 Console.WriteLine("8. Mostrar DTs");
                 Console.WriteLine("9. Mostrar equipos");
                 Console.WriteLine("10. Mostrar posiciones");
+                Console.WriteLine("11. Mostrar jugadores");
                 Console.WriteLine("0. Salir");
                 opcion = Int32.Parse(Console.ReadLine());
                 switch (opcion)
@@ -61,6 +62,9 @@ namespace Torneo.App.Consola
                         break;
                     case 10:
                         GetAllPosiciones();
+                        break;
+                    case 11:
+                        GetAllJugadores();
                         break;
                 }
             } while (opcion != 0);
@@ -194,6 +198,16 @@ namespace Torneo.App.Consola
             foreach (var posicion in _repoPosicion.GetAllPosiciones())
             {
                 Console.WriteLine(posicion.Id + " " + posicion.Nombre);
+            }
+        }
+
+        private static void GetAllJugadores()
+        {
+            foreach (var jugador in _repoJugador.GetAllJugadores())
+            {
+                Console.WriteLine(jugador.Nombre + " " + jugador.Numero + " " 
+                + jugador.Equipo.Nombre + " " + jugador.Posicion.Nombre);
+
             }
         }
 
