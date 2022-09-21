@@ -26,6 +26,16 @@ namespace Torneo.App.Persistencia
             return equipos;
         }
 
+        public Equipo GetEquipo(int idEquipo)
+        {
+            var equipoEncontrado = _dataContext.Equipos
+            .Where(e => e.Id == idEquipo)
+            .Include(e => e.Municipio)
+            .Include(e => e.DirectorTecnico)
+            .FirstOrDefault();
+            return equipoEncontrado;
+        }
+
 
     }
 }

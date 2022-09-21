@@ -9,6 +9,7 @@
             <th scope="col">Id</th>
             <th scope="col">Nombre</th>
             <th scope="col">Municipio</th>
+            <th scope="col">Acciones</th>
         </tr>
     </thead>
     <tbody>
@@ -18,6 +19,11 @@
                 <th>@equipo.Id</th>
                 <td>@equipo.Nombre</td>
                 <td>@equipo.Municipio.Nombre</td>
+                <td>
+                    <a class="btn btn-primary" asp-page="./Details" asp-route-id="@equipo.Id">
+                        Detalle
+                    </a>
+                </td>
             </tr>
         }
     </tbody>
