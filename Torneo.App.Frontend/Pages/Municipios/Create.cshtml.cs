@@ -5,26 +5,18 @@ using Torneo.App.Persistencia;
 
 namespace Torneo.App.Frontend.Pages.Municipios
 {
-    public class DetailsModel : PageModel
+    public class CreateModel : PageModel
     {
         private readonly IRepositorioMunicipio _repoMunicipio;
         public Municipio municipio { get; set; }
-        public DetailsModel(IRepositorioMunicipio repoMunicipio)
+
+        public CreateModel(IRepositorioMunicipio repoMunicipio)
         {
             _repoMunicipio = repoMunicipio;
         }
-
-        public IActionResult OnGet(int id)
+        public void OnGet()
         {
-            municipio = _repoMunicipio.GetMunicipio(id);
-            if (municipio == null)
-            {
-                return NotFound();
-            }
-            else
-            {
-                return Page();
-            }
+            municipio = new Municipio();
         }
 
         public IActionResult OnPost(Municipio municipio)
