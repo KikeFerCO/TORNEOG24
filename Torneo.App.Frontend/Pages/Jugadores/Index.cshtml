@@ -9,16 +9,22 @@
             <th scope="col">Id</th>
             <th scope="col">Nombre</th>
             <th scope="col">Numero</th>
+            <th scope="col">Acciones</th>
         </tr>
     </thead>
-    tbody>
-        @foreach (var jugador in Model.jugadores)
-        {
-            <tr>
-                <th>@jugador.Id</th>
-                <td>@jugador.Nombre</td>
-                <td>@jugador.Numero</td>
-            </tr>
-        }
+    <tbody>
+    @foreach (var jugador in Model.jugadores)
+    {
+        <tr>
+            <th>@jugador.Id</th>
+            <td>@jugador.Nombre</td>
+            <td>@jugador.Numero</td>
+            <td>
+                <a class="btn btn-primary" asp-page="./Details" asp-route-id="@jugador.Id">
+                    Detalle
+                </a>
+            </td>
+        </tr>
+    }
     </tbody>
 </table>
